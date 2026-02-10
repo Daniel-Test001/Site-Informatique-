@@ -1,0 +1,2443 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RenauTech | Solutions IT & Cybersécurité</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0A2463;
+            --secondary: #3A86FF;
+            --accent: #4CC9F0;
+            --cyber: #00FF88;
+            --dark: #121212;
+            --light: #F8F9FA;
+            --gray: #6C757D;
+            --success: #28A745;
+            --danger: #DC3545;
+            --warning: #FFC107;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            color: var(--secondary);
+        }
+
+        .cyber {
+            color: var(--cyber);
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .navbar {
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo-icon {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+
+        .logo-text .tech {
+            color: var(--cyber);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--dark);
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 5px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .nav-link i {
+            margin-right: 8px;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .cart-icon-container {
+            position: relative;
+            margin-left: 1rem;
+        }
+
+        .cart-icon {
+            position: relative;
+            text-decoration: none;
+            color: var(--dark);
+            font-size: 1.2rem;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--danger);
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* ===== PAGES ===== */
+        .page {
+            display: none;
+            padding-top: 80px;
+            min-height: calc(100vh - 80px);
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat h3 {
+            font-size: 2.5rem;
+            color: var(--cyber);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .btn i {
+            margin-right: 8px;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        .floating-shapes {
+            position: relative;
+            height: 300px;
+        }
+
+        .shape {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--cyber);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape1 {
+            top: 0;
+            left: 50%;
+            animation-delay: 0s;
+        }
+
+        .shape2 {
+            top: 50%;
+            right: 0;
+            animation-delay: 2s;
+        }
+
+        .shape3 {
+            bottom: 0;
+            left: 30%;
+            animation-delay: 4s;
+        }
+
+        .shape4 {
+            top: 20%;
+            left: 10%;
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* ===== SERVICES SECTION ===== */
+        .services {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card.highlight-card {
+            border-color: var(--cyber);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card.highlight-card::before {
+            content: 'Populaire';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--cyber);
+            color: var(--dark);
+            padding: 5px 30px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-features {
+            list-style: none;
+            text-align: left;
+            margin: 1.5rem 0;
+        }
+
+        .service-features li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .service-features i {
+            color: var(--success);
+            margin-right: 10px;
+        }
+
+        .service-pricing {
+            font-size: 1.2rem;
+            margin: 1.5rem 0;
+            color: var(--gray);
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .btn-service {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-service:hover {
+            background: var(--secondary);
+        }
+
+        /* ===== BOUTIQUE SECTION ===== */
+        .boutique {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .shop-controls {
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .category-btn {
+            padding: 8px 20px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .search-box {
+            position: relative;
+            width: 300px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 20px 10px 40px;
+            border: 2px solid #e0e0e0;
+            border-radius: 30px;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .search-box input:focus {
+            border-color: var(--secondary);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            padding: 0 20px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            height: 200px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        .product-category {
+            display: inline-block;
+            padding: 5px 15px;
+            background: var(--light);
+            color: var(--primary);
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-description {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .btn-add-cart {
+            width: 100%;
+            padding: 12px;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-add-cart:hover {
+            background: var(--primary);
+        }
+
+        .btn-add-cart i {
+            margin-right: 8px;
+        }
+
+        .shop-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .info-card {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .info-card i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* ===== PORTFOLIO SECTION ===== */
+        .portfolio {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 25px;
+            background: var(--light);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 300px;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(10, 36, 99, 0.9));
+            color: white;
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--cyber);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* ===== CYBERSECURITY SECTION ===== */
+        .cybersecurity {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            color: white;
+        }
+
+        .cyber-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .security-features {
+            margin: 2rem 0;
+        }
+
+        .security-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+        }
+
+        .security-item i {
+            font-size: 2rem;
+            color: var(--cyber);
+            margin-right: 1rem;
+        }
+
+        .btn-cyber {
+            background: var(--cyber);
+            color: var(--dark);
+            font-weight: 700;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .btn-cyber:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .security-animation {
+            position: relative;
+            height: 300px;
+        }
+
+        .shield {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 8rem;
+            color: var(--cyber);
+            animation: pulse 2s infinite;
+        }
+
+        .hacker {
+            position: absolute;
+            bottom: 20%;
+            right: 20%;
+            font-size: 3rem;
+            color: var(--danger);
+            animation: move 3s infinite alternate;
+        }
+
+        .attack-line {
+            position: absolute;
+            top: 60%;
+            left: 30%;
+            width: 40%;
+            height: 2px;
+            background: var(--danger);
+            transform-origin: left;
+            animation: attack 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        @keyframes move {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50px); }
+        }
+
+        @keyframes attack {
+            0% { transform: scaleX(0); opacity: 1; }
+            100% { transform: scaleX(1); opacity: 0; }
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .info-item i {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-right: 1rem;
+            margin-top: 5px;
+        }
+
+        .contact-form {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        /* ===== PANIER SECTION ===== */
+        .cart-page {
+            padding: 120px 0 80px;
+            min-height: calc(100vh - 80px);
+        }
+
+        .cart-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 3rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .empty-cart i {
+            font-size: 4rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 80px 2fr 1fr 1fr 1fr auto;
+            gap: 1rem;
+            align-items: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .item-category {
+            display: inline-block;
+            padding: 3px 10px;
+            background: var(--light);
+            color: var(--primary);
+            border-radius: 30px;
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: var(--danger);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .cart-summary {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .summary-details {
+            margin: 2rem 0;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .summary-row.total {
+            border-bottom: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .coupon-section {
+            display: flex;
+            gap: 10px;
+            margin: 2rem 0;
+        }
+
+        .coupon-section input {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .btn-coupon {
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+            margin: 1rem 0;
+        }
+
+        .security-note {
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3,
+        .footer-section h4 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--cyber);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--cyber);
+            color: var(--dark);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            animation: modalFade 0.3s;
+        }
+
+        @keyframes modalFade {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+
+        /* ===== NOTIFICATION ===== */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 3000;
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            .hero-container,
+            .cyber-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-visual,
+            .cyber-visual {
+                order: -1;
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .cart-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 2rem;
+                box-shadow: var(--shadow);
+                transition: var(--transition);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-link {
+                width: 100%;
+                margin: 0.5rem 0;
+                padding: 1rem;
+            }
+            
+            .nav-toggle {
+                display: block;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .shop-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-box {
+                width: 100%;
+            }
+            
+            .cart-item {
+                grid-template-columns: 60px 1fr;
+                grid-template-rows: auto auto auto;
+                gap: 0.5rem;
+            }
+            
+            .cart-item-price,
+            .cart-item-quantity,
+            .cart-item-total,
+            .cart-item-remove {
+                grid-column: 1 / -1;
+                justify-self: start;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="#" class="logo" onclick="showPage('home')">
+                    <span class="logo-icon"><i class="fas fa-shield-alt"></i></span>
+                    <span class="logo-text">Renau<span class="tech">Tech</span></span>
+                </a>
+                
+                <ul class="nav-menu">
+                    <li><a class="nav-link active" onclick="showPage('home')"><i class="fas fa-home"></i> Accueil</a></li>
+                    <li><a class="nav-link" onclick="showPage('services')"><i class="fas fa-cogs"></i> Services</a></li>
+                    <li><a class="nav-link" onclick="showPage('portfolio')"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+                    <li><a class="nav-link" onclick="showPage('boutique')"><i class="fas fa-shopping-cart"></i> Boutique</a></li>
+                    <li><a class="nav-link" onclick="showPage('cyber')"><i class="fas fa-user-shield"></i> Sécurité</a></li>
+                    <li><a class="nav-link" onclick="showPage('contact')"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li class="cart-icon-container">
+                        <a class="cart-icon" onclick="showPage('cart')">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <button class="nav-toggle" id="navToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page d'Accueil -->
+    <div id="home" class="page active">
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="highlight">Solutions Digitales</span> 
+                        & <span class="cyber">Cybersécurité</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        De la conception web à la protection complète de vos systèmes
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <h3>150+</h3>
+                            <p>Projets Livrés</p>
+                        </div>
+                        <div class="stat">
+                            <h3>98%</h3>
+                            <p>Satisfaction Clients</p>
+                        </div>
+                        <div class="stat">
+                            <h3>24/7</h3>
+                            <p>Support Technique</p>
+                        </div>
+                    </div>
+                    <div class="hero-buttons">
+                        <a class="btn btn-primary" onclick="showPage('services')">
+                            <i class="fas fa-rocket"></i> Nos Services
+                        </a>
+                        <a class="btn btn-secondary" onclick="showPage('contact')">
+                            <i class="fas fa-comment"></i> Devis Gratuit
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="floating-shapes">
+                        <div class="shape shape1"><i class="fas fa-laptop-code"></i></div>
+                        <div class="shape shape2"><i class="fas fa-shield-alt"></i></div>
+                        <div class="shape shape3"><i class="fas fa-mobile-alt"></i></div>
+                        <div class="shape shape4"><i class="fas fa-gamepad"></i></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Services dans la page d'accueil -->
+        <section class="services">
+            <div class="section-header">
+                <h2 class="section-title">Nos <span class="highlight">Expertises</span></h2>
+                <p class="section-subtitle">Des solutions complètes pour votre transformation digitale</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Développement Web</h3>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Sites vitrine & corporate</li>
+                        <li><i class="fas fa-check"></i> E-commerce avancés</li>
+                        <li><i class="fas fa-check"></i> Applications web sur mesure</li>
+                        <li><i class="fas fa-check"></i> SEO & Performance</li>
+                    </ul>
+                    <div class="service-pricing">
+                        À partir de <span class="price">1 200€</span>
+                    </div>
+                    <button class="btn-service" data-service="web">
+                        <i class="fas fa-plus-circle"></i> Détails
+                    </button>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Applications & Jeux</h3>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Applications mobiles</li>
+                        <li><i class="fas fa-check"></i> Jeux vidéo & serious games</li>
+                        <li><i class="fas fa-check"></i> Applications desktop</li>
+                        <li><i class="fas fa-check"></i> Réalité augmentée</li>
+                    </ul>
+                    <div class="service-pricing">
+                        À partir de <span class="price">3 500€</span>
+                    </div>
+                    <button class="btn-service" data-service="apps">
+                        <i class="fas fa-plus-circle"></i> Détails
+                    </button>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card highlight-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>Cybersécurité</h3>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Audit de sécurité</li>
+                        <li><i class="fas fa-check"></i> Protection de sites/apps</li>
+                        <li><i class="fas fa-check"></i> Surveillance 24/7</li>
+                        <li><i class="fas fa-check"></i> Formation équipes</li>
+                    </ul>
+                    <div class="service-pricing">
+                        À partir de <span class="price">800€</span>
+                    </div>
+                    <button class="btn-service" data-service="cyber">
+                        <i class="fas fa-plus-circle"></i> Détails
+                    </button>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Maintenance IT</h3>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Support technique</li>
+                        <li><i class="fas fa-check"></i> Mises à jour & sauvegardes</li>
+                        <li><i class="fas fa-check"></i> Surveillance proactive</li>
+                        <li><i class="fas fa-check"></i> Forfaits mensuels</li>
+                    </ul>
+                    <div class="service-pricing">
+                        À partir de <span class="price">99€/mois</span>
+                    </div>
+                    <button class="btn-service" data-service="maintenance">
+                        <i class="fas fa-plus-circle"></i> Détails
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Page Services -->
+    <div id="services" class="page">
+        <section class="services">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Tous Nos <span class="highlight">Services</span></h2>
+                    <p class="section-subtitle">Des solutions complètes pour votre entreprise</p>
+                </div>
+                
+                <div class="services-grid">
+                    <!-- Les services sont déjà inclus dans la page d'accueil -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Page Portfolio -->
+    <div id="portfolio" class="page">
+        <section class="portfolio">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Nos <span class="highlight">Réalisations</span></h2>
+                    <p class="section-subtitle">Projets qui démontrent notre expertise</p>
+                </div>
+
+                <div class="portfolio-filter">
+                    <button class="filter-btn active" data-filter="all">Tous</button>
+                    <button class="filter-btn" data-filter="web">Web</button>
+                    <button class="filter-btn" data-filter="mobile">Mobile</button>
+                    <button class="filter-btn" data-filter="jeux">Jeux</button>
+                    <button class="filter-btn" data-filter="securite">Sécurité</button>
+                </div>
+
+                <div class="portfolio-grid">
+                    <div class="portfolio-item" data-category="web">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600" alt="Site E-commerce">
+                        <div class="portfolio-overlay">
+                            <h4>E-commerce Luxury</h4>
+                            <p>Site e-commerce haute sécurité</p>
+                            <a class="portfolio-link">Voir le projet</a>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="mobile">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600" alt="Application Mobile">
+                        <div class="portfolio-overlay">
+                            <h4>App FinTech</h4>
+                            <p>Application bancaire sécurisée</p>
+                            <a class="portfolio-link">Voir le projet</a>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-item" data-category="securite">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600" alt="Sécurité">
+                        <div class="portfolio-overlay">
+                            <h4>Système de Surveillance</h4>
+                            <p>Monitoring 24/7 pour entreprise</p>
+                            <a class="portfolio-link">Voir le projet</a>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-item" data-category="jeux">
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600" alt="Jeu Vidéo">
+                        <div class="portfolio-overlay">
+                            <h4>EduGame Pro</h4>
+                            <p>Jeu sérieux éducatif</p>
+                            <a class="portfolio-link">Voir le projet</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Page Boutique -->
+    <div id="boutique" class="page">
+        <section class="boutique">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Boutique <span class="highlight">En Ligne</span></h2>
+                    <p class="section-subtitle">Produits & services disponibles immédiatement</p>
+                </div>
+
+                <div class="shop-controls">
+                    <div class="categories">
+                        <button class="category-btn active" data-category="all">Tous</button>
+                        <button class="category-btn" data-category="web">Développement Web</button>
+                        <button class="category-btn" data-category="securite">Sécurité</button>
+                        <button class="category-btn" data-category="formation">Formations</button>
+                        <button class="category-btn" data-category="maintenance">Maintenance</button>
+                    </div>
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Rechercher un produit...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+
+                <div class="products-grid" id="productsContainer">
+                    <!-- Les produits seront chargés dynamiquement -->
+                </div>
+
+                <div class="shop-info">
+                    <div class="info-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Paiement Sécurisé</h4>
+                        <p>Transactions cryptées SSL</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-shipping-fast"></i>
+                        <h4>Livraison Immédiate</h4>
+                        <p>Produits digitaux instantanés</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-headset"></i>
+                        <h4>Support 24/7</h4>
+                        <p>Assistance technique incluse</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <h4>Garantie Satisfait</h4>
+                        <p>30 jours pour changer d'avis</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Page Cybersécurité -->
+    <div id="cyber" class="page">
+        <section class="cybersecurity">
+            <div class="cyber-container">
+                <div class="cyber-content">
+                    <h2 class="cyber-title">Protection <span class="cyber">Cybersécurité</span> Avancée</h2>
+                    <p class="cyber-text">Nous sécurisons vos projets dès la conception avec des protocoles de sécurité de niveau bancaire.</p>
+                    
+                    <div class="security-features">
+                        <div class="security-item">
+                            <i class="fas fa-lock"></i>
+                            <div>
+                                <h4>Chiffrement SSL/TLS</h4>
+                                <p>Protection des données en transit</p>
+                            </div>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <h4>Firewall Avancé</h4>
+                                <p>Protection contre les attaques DDoS</p>
+                            </div>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-bug"></i>
+                            <div>
+                                <h4>Tests d'Intrusion</h4>
+                                <p>Détection des vulnérabilités</p>
+                            </div>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-history"></i>
+                            <div>
+                                <h4>Sauvegardes Automatiques</h4>
+                                <p>Récupération des données garantie</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a class="btn btn-cyber" onclick="showPage('contact')">
+                        <i class="fas fa-shield-alt"></i> Audit de Sécurité Gratuit
+                    </a>
+                </div>
+                
+                <div class="cyber-visual">
+                    <div class="security-animation">
+                        <div class="shield">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="attack-line"></div>
+                        <div class="hacker">
+                            <i class="fas fa-user-secret"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Page Contact -->
+    <div id="contact" class="page">
+        <section class="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Contactez-<span class="highlight">Nous</span></h2>
+                    <p class="section-subtitle">Discutons de votre projet</p>
+                </div>
+
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Adresse</h4>
+                                <p>123 Avenue de la Technologie<br>75000 Paris, France</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Téléphone</h4>
+                                <p>+33 1 23 45 67 89</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>contact@renautech.fr</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Horaires</h4>
+                                <p>Lun-Ven: 9h-19h<br>Support 24/7 pour la sécurité</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <input type="text" id="name" placeholder="Votre nom" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" placeholder="Votre email" required>
+                            </div>
+                            <div class="form-group">
+                                <select id="serviceType" required>
+                                    <option value="">Type de service</option>
+                                    <option value="web">Développement Web</option>
+                                    <option value="app">Application Mobile</option>
+                                    <option value="jeu">Jeu Vidéo</option>
+                                    <option value="cyber">Cybersécurité</option>
+                                    <option value="maintenance">Maintenance</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" rows="5" placeholder="Description de votre projet..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i> Envoyer la demande
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Page Panier -->
+    <div id="cart" class="page">
+        <section class="cart-page">
+            <div class="container">
+                <h1 class="section-title">Votre <span class="highlight">Panier</span></h1>
+                
+                <div class="cart-container">
+                    <div class="cart-items" id="cartItems">
+                        <div class="empty-cart" id="emptyCart">
+                            <i class="fas fa-shopping-cart"></i>
+                            <h3>Votre panier est vide</h3>
+                            <p>Ajoutez des produits depuis notre boutique</p>
+                            <a class="btn btn-primary" onclick="showPage('boutique')">
+                                <i class="fas fa-store"></i> Visiter la boutique
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="cart-summary" id="cartSummary" style="display: none;">
+                        <h3>Récapitulatif</h3>
+                        <div class="summary-details">
+                            <div class="summary-row">
+                                <span>Sous-total</span>
+                                <span id="subtotal">0€</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>TVA (20%)</span>
+                                <span id="tax">0€</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total</span>
+                                <span id="total">0€</span>
+                            </div>
+                        </div>
+                        
+                        <div class="coupon-section">
+                            <input type="text" id="couponCode" placeholder="Code promo">
+                            <button id="applyCoupon" class="btn-coupon">Appliquer</button>
+                        </div>
+                        
+                        <button id="checkoutBtn" class="btn btn-primary checkout-btn">
+                            <i class="fas fa-lock"></i> Procéder au paiement
+                        </button>
+                        
+                        <p class="security-note">
+                            <i class="fas fa-shield-alt"></i>
+                            Paiement sécurisé SSL
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>RenauTech</h3>
+                <p>Solutions informatiques complètes intégrant développement et sécurité.</p>
+                <div class="social-links">
+                    <a><i class="fab fa-linkedin"></i></a>
+                    <a><i class="fab fa-github"></i></a>
+                    <a><i class="fab fa-twitter"></i></a>
+                    <a><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a onclick="showPage('services')">Développement Web</a></li>
+                    <li><a onclick="showPage('services')">Applications & Jeux</a></li>
+                    <li><a onclick="showPage('services')">Cybersécurité</a></li>
+                    <li><a onclick="showPage('services')">Maintenance IT</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Boutique</h4>
+                <ul>
+                    <li><a onclick="showPage('boutique')">Produits Web</a></li>
+                    <li><a onclick="showPage('boutique')">Formations</a></li>
+                    <li><a onclick="showPage('boutique')">Services Sécurité</a></li>
+                    <li><a onclick="showPage('cart')">Panier</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Légal</h4>
+                <ul>
+                    <li><a>Mentions légales</a></li>
+                    <li><a>CGV</a></li>
+                    <li><a>Politique de confidentialité</a></li>
+                    <li><a>Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 RenauTech. Tous droits réservés. | Site sécurisé par RenauTech Security</p>
+        </div>
+    </footer>
+
+    <!-- Modal pour les détails des services -->
+    <div class="modal" id="serviceModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modalTitle"></h3>
+            <div id="modalContent"></div>
+            <button class="btn btn-primary" id="addToCartBtn">
+                <i class="fas fa-cart-plus"></i> Ajouter au panier
+            </button>
+        </div>
+    </div>
+
+    <!-- Notification d'ajout au panier -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span>Produit ajouté au panier !</span>
+    </div>
+
+    <script>
+        // ===== DONNÉES GLOBALES =====
+        const productsData = [
+            {
+                id: 1,
+                name: "Site Vitrine Professionnel",
+                category: "web",
+                price: 1200,
+                description: "Site web responsive 5 pages avec CMS",
+                features: ["Design personnalisé", "Responsive", "CMS intégré", "SEO de base", "1 an d'hébergement"],
+                image: "fas fa-laptop-code"
+            },
+            {
+                id: 2,
+                name: "Site E-commerce Complet",
+                category: "web",
+                price: 3500,
+                description: "Boutique en ligne avec paiement sécurisé",
+                features: ["Catalogue produits", "Paiement en ligne", "Gestion stocks", "SEO avancé", "Formation"],
+                image: "fas fa-shopping-cart"
+            },
+            {
+                id: 3,
+                name: "Application Mobile iOS/Android",
+                category: "web",
+                price: 8500,
+                description: "Application native cross-platform",
+                features: ["Design UX/UI", "Développement natif", "Backend API", "Publication stores", "Maintenance 6 mois"],
+                image: "fas fa-mobile-alt"
+            },
+            {
+                id: 4,
+                name: "Audit de Sécurité Complet",
+                category: "securite",
+                price: 800,
+                description: "Analyse complète de vos systèmes",
+                features: ["Scan vulnérabilités", "Test d'intrusion", "Rapport détaillé", "Plan d'action", "Priorisation"],
+                image: "fas fa-shield-alt"
+            },
+            {
+                id: 5,
+                name: "Protection DDoS Avancée",
+                category: "securite",
+                price: 299,
+                description: "Protection contre les attaques distribuées",
+                period: "mois",
+                features: ["Protection réseau", "Mitigation automatique", "Surveillance 24/7", "Rapports mensuels", "Support prioritaire"],
+                image: "fas fa-network-wired"
+            },
+            {
+                id: 6,
+                name: "Formation Cybersécurité Équipe",
+                category: "formation",
+                price: 1200,
+                description: "Session de formation pour 10 personnes",
+                features: ["1 journée complète", "Matériel pédagogique", "Exercices pratiques", "Certificat", "Support après formation"],
+                image: "fas fa-graduation-cap"
+            },
+            {
+                id: 7,
+                name: "Forfait Maintenance Silver",
+                category: "maintenance",
+                price: 99,
+                description: "Maintenance préventive mensuelle",
+                period: "mois",
+                features: ["Mises à jour sécurité", "Sauvegardes", "Monitoring", "Support 9h-18h", "Rapport mensuel"],
+                image: "fas fa-tools"
+            },
+            {
+                id: 8,
+                name: "Forfait Maintenance Gold",
+                category: "maintenance",
+                price: 199,
+                description: "Maintenance complète 24/7",
+                period: "mois",
+                features: ["Tout Silver +", "Support 24/7", "Intervention urgente", "Analyse performance", "Optimisation"],
+                image: "fas fa-crown"
+            },
+            {
+                id: 9,
+                name: "Template Site Sécurisé",
+                category: "web",
+                price: 299,
+                description: "Template HTML/CSS/JS avec sécurité intégrée",
+                features: ["Design moderne", "Code sécurisé", "Documentation", "Support 1 an", "Mises à jour"],
+                image: "fas fa-file-code"
+            },
+            {
+                id: 10,
+                name: "Plugin Sécurité WordPress",
+                category: "securite",
+                price: 149,
+                description: "Plugin de sécurité personnalisé",
+                features: ["Protection login", "Scan malware", "Firewall", "Backup automatique", "Support"],
+                image: "fas fa-wordpress"
+            }
+        ];
+
+        const serviceDetails = {
+            web: {
+                title: 'Développement Web Professionnel',
+                content: `
+                    <h4>Services inclus :</h4>
+                    <ul>
+                        <li>Conception de site web responsive</li>
+                        <li>Développement e-commerce (Shopify, WooCommerce)</li>
+                        <li>Applications web sur mesure</li>
+                        <li>Optimisation SEO et performance</li>
+                        <li>Hébergement et maintenance</li>
+                    </ul>
+                    <p><strong>Délai :</strong> 2-6 semaines selon complexité</p>
+                    <p><strong>Garantie :</strong> 1 an sur le développement</p>
+                `
+            },
+            apps: {
+                title: 'Applications & Jeux Mobiles',
+                content: `
+                    <h4>Nos expertises :</h4>
+                    <ul>
+                        <li>Applications iOS et Android natives</li>
+                        <li>Applications cross-platform (React Native, Flutter)</li>
+                        <li>Jeux sérieux pour la formation</li>
+                        <li>Jeux mobiles casual</li>
+                        <li>Réalité augmentée/virtuelle</li>
+                    </ul>
+                    <p><strong>Technologies :</strong> Swift, Kotlin, Unity, Unreal Engine</p>
+                    <p><strong>Publication :</strong> App Store et Google Play inclus</p>
+                `
+            },
+            cyber: {
+                title: 'Solutions de Cybersécurité',
+                content: `
+                    <h4>Protection complète :</h4>
+                    <ul>
+                        <li>Audit de sécurité complet</li>
+                        <li>Tests d'intrusion (pentesting)</li>
+                        <li>Protection DDoS avancée</li>
+                        <li>Surveillance 24/7</li>
+                        <li>Formation des équipes</li>
+                    </ul>
+                    <p><strong>Certifications :</strong> Normes ISO 27001, RGPD</p>
+                    <p><strong>Rapport :</strong> Analyse détaillée + plan d'action</p>
+                `
+            },
+            maintenance: {
+                title: 'Maintenance Informatique',
+                content: `
+                    <h4>Forfaits de maintenance :</h4>
+                    <ul>
+                        <li>Support technique à distance</li>
+                        <li>Mises à jour de sécurité</li>
+                        <li>Sauvegardes automatisées</li>
+                        <li>Surveillance proactive</li>
+                        <li>Intervention sur site (selon forfait)</li>
+                    </ul>
+                    <p><strong>Disponibilité :</strong> 24/7 pour les forfaits Premium</p>
+                    <p><strong>Temps de réponse :</strong> Moins de 15 minutes</p>
+                `
+            }
+        };
+
+        // ===== VARIABLES GLOBALES =====
+        let cart = JSON.parse(localStorage.getItem('renautechCart')) || [];
+
+        // ===== GESTION DES PAGES =====
+        function showPage(pageId) {
+            // Cacher toutes les pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Afficher la page demandée
+            document.getElementById(pageId).classList.add('active');
+            
+            // Mettre à jour la navigation
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Mettre à jour le lien actif
+            const activeLink = document.querySelector(`[onclick="showPage('${pageId}')"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+            
+            // Charger les données si nécessaire
+            if (pageId === 'boutique') {
+                displayProducts();
+            } else if (pageId === 'cart') {
+                displayCart();
+            }
+            
+            // Fermer le menu mobile si ouvert
+            navMenu.classList.remove('active');
+            navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            
+            // Scroll vers le haut
+            window.scrollTo(0, 0);
+        }
+
+        // ===== GESTION DU PANIER =====
+        function updateCartCount() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = totalItems;
+        }
+
+        function addToCart(productId) {
+            const product = productsData.find(p => p.id === productId);
+            if (!product) return;
+            
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    ...product,
+                    quantity: 1
+                });
+            }
+            
+            localStorage.setItem('renautechCart', JSON.stringify(cart));
+            updateCartCount();
+            showNotification(`${product.name} ajouté au panier !`);
+            
+            // Si on est sur la page boutique, recharger les produits
+            if (document.getElementById('boutique').classList.contains('active')) {
+                displayProducts();
+            }
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('renautechCart', JSON.stringify(cart));
+            displayCart();
+            updateCartCount();
+        }
+
+        function updateQuantity(index, action) {
+            if (action === 'increase') {
+                cart[index].quantity += 1;
+            } else if (action === 'decrease') {
+                if (cart[index].quantity > 1) {
+                    cart[index].quantity -= 1;
+                } else {
+                    cart.splice(index, 1);
+                }
+            }
+            
+            localStorage.setItem('renautechCart', JSON.stringify(cart));
+            displayCart();
+            updateCartCount();
+        }
+
+        function displayCart() {
+            const cartItems = document.getElementById('cartItems');
+            const emptyCart = document.getElementById('emptyCart');
+            const cartSummary = document.getElementById('cartSummary');
+            
+            if (cart.length === 0) {
+                emptyCart.style.display = 'block';
+                cartSummary.style.display = 'none';
+                return;
+            }
+            
+            emptyCart.style.display = 'none';
+            cartSummary.style.display = 'block';
+            
+            cartItems.innerHTML = '';
+            
+            cart.forEach((item, index) => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-image">
+                        <i class="${item.image}"></i>
+                    </div>
+                    <div class="cart-item-details">
+                        <h4>${item.name}</h4>
+                        <p>${item.description}</p>
+                        <div class="item-category">${getCategoryName(item.category)}</div>
+                    </div>
+                    <div class="cart-item-price">
+                        ${item.price}€${item.period ? `/${item.period}` : ''}
+                    </div>
+                    <div class="cart-item-quantity">
+                        <button class="quantity-btn" data-index="${index}" data-action="decrease">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <span class="quantity">${item.quantity}</span>
+                        <button class="quantity-btn" data-index="${index}" data-action="increase">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <div class="cart-item-total">
+                        ${(item.price * item.quantity).toFixed(2)}€
+                    </div>
+                    <button class="cart-item-remove" data-index="${index}">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+                cartItems.appendChild(cartItem);
+            });
+            
+            calculateTotals();
+            
+            // Ajouter les événements
+            document.querySelectorAll('.quantity-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    const action = this.getAttribute('data-action');
+                    updateQuantity(index, action);
+                });
+            });
+            
+            document.querySelectorAll('.cart-item-remove').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    removeFromCart(index);
+                });
+            });
+            
+            // Gestion du coupon
+            document.getElementById('applyCoupon').addEventListener('click', applyCoupon);
+            
+            // Gestion du checkout
+            document.getElementById('checkoutBtn').addEventListener('click', proceedToCheckout);
+        }
+
+        function calculateTotals() {
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const tax = subtotal * 0.20;
+            const total = subtotal + tax;
+            
+            document.getElementById('subtotal').textContent = subtotal.toFixed(2) + '€';
+            document.getElementById('tax').textContent = tax.toFixed(2) + '€';
+            document.getElementById('total').textContent = total.toFixed(2) + '€';
+        }
+
+        function applyCoupon() {
+            const couponCode = document.getElementById('couponCode').value.toUpperCase();
+            const coupons = {
+                'RENAUTECH10': 0.10,
+                'SECURITY15': 0.15,
+                'WEB20': 0.20
+            };
+            
+            if (coupons[couponCode]) {
+                const discount = coupons[couponCode];
+                const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                const discountAmount = subtotal * discount;
+                const tax = (subtotal - discountAmount) * 0.20;
+                const total = subtotal - discountAmount + tax;
+                
+                document.getElementById('subtotal').innerHTML = `
+                    <span style="text-decoration: line-through; color: #999;">${subtotal.toFixed(2)}€</span>
+                    <span>${(subtotal - discountAmount).toFixed(2)}€</span>
+                `;
+                document.getElementById('tax').textContent = tax.toFixed(2) + '€';
+                document.getElementById('total').textContent = total.toFixed(2) + '€';
+                
+                alert(`Coupon appliqué ! Réduction de ${(discount * 100)}%`);
+            } else {
+                alert('Code promo invalide');
+            }
+        }
+
+        function proceedToCheckout() {
+            if (confirm(`Confirmer la commande de ${cart.length} produit(s) ?`)) {
+                const invoiceNumber = 'INV-' + Date.now();
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0) * 1.20;
+                
+                alert(`Commande confirmée !\nNuméro de facture : ${invoiceNumber}\nTotal : ${total.toFixed(2)}€\n\nUn email de confirmation vous a été envoyé.`);
+                
+                localStorage.removeItem('renautechCart');
+                cart = [];
+                displayCart();
+                updateCartCount();
+                
+                setTimeout(() => {
+                    showPage('home');
+                }, 2000);
+            }
+        }
+
+        // ===== BOUTIQUE =====
+        function getCategoryName(category) {
+            const categories = {
+                'web': 'Développement Web',
+                'securite': 'Sécurité',
+                'formation': 'Formation',
+                'maintenance': 'Maintenance'
+            };
+            return categories[category] || category;
+        }
+
+        function displayProducts(filterCategory = 'all', searchTerm = '') {
+            const container = document.getElementById('productsContainer');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            const filteredProducts = productsData.filter(product => {
+                const matchesCategory = filterCategory === 'all' || product.category === filterCategory;
+                const matchesSearch = searchTerm === '' || 
+                    product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    product.description.toLowerCase().includes(searchTerm.toLowerCase());
+                return matchesCategory && matchesSearch;
+            });
+            
+            if (filteredProducts.length === 0) {
+                container.innerHTML = `
+                    <div class="no-products">
+                        <i class="fas fa-search"></i>
+                        <h3>Aucun produit trouvé</h3>
+                        <p>Essayez d'autres critères de recherche</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            filteredProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <div class="product-image">
+                        <i class="${product.image}"></i>
+                    </div>
+                    <div class="product-content">
+                        <span class="product-category">${getCategoryName(product.category)}</span>
+                        <h3 class="product-title">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-features">
+                            ${product.features.map(feat => `<span class="feature-tag">${feat}</span>`).join('')}
+                        </div>
+                        <div class="product-price">
+                            ${product.price}€${product.period ? `/${product.period}` : ''}
+                        </div>
+                        <button class="btn-add-cart" data-id="${product.id}">
+                            <i class="fas fa-cart-plus"></i> Ajouter au panier
+                        </button>
+                    </div>
+                `;
+                container.appendChild(productCard);
+            });
+            
+            // Ajouter les événements aux boutons
+            document.querySelectorAll('.btn-add-cart').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    addToCart(productId);
+                });
+            });
+        }
+
+        function setupCategoryFilters() {
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-category');
+                    const searchInput = document.getElementById('searchInput');
+                    displayProducts(category, searchInput ? searchInput.value : '');
+                });
+            });
+        }
+
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            if (!searchInput) return;
+            
+            let searchTimeout;
+            
+            searchInput.addEventListener('input', function() {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    const activeBtn = document.querySelector('.category-btn.active');
+                    const category = activeBtn ? activeBtn.getAttribute('data-category') : 'all';
+                    displayProducts(category, this.value);
+                }, 300);
+            });
+        }
+
+        // ===== PORTFOLIO =====
+        function setupPortfolioFilter() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    const filter = btn.getAttribute('data-filter');
+                    
+                    portfolioItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'scale(1)';
+                            }, 100);
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'scale(0.8)';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        }
+
+        // ===== MODAL =====
+        function setupModal() {
+            const serviceBtns = document.querySelectorAll('.btn-service');
+            const modal = document.getElementById('serviceModal');
+            const closeModal = document.querySelector('.close-modal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalContent = document.getElementById('modalContent');
+            const addToCartBtn = document.getElementById('addToCartBtn');
+            
+            serviceBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const service = btn.getAttribute('data-service');
+                    const details = serviceDetails[service];
+                    
+                    modalTitle.textContent = details.title;
+                    modalContent.innerHTML = details.content;
+                    modal.style.display = 'flex';
+                    
+                    addToCartBtn.setAttribute('data-service', service);
+                });
+            });
+            
+            closeModal.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+            
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            addToCartBtn.addEventListener('click', function() {
+                const service = this.getAttribute('data-service');
+                const serviceProducts = {
+                    'web': { id: 100, name: 'Service Développement Web', price: 1200 },
+                    'apps': { id: 101, name: 'Service Applications Mobiles', price: 3500 },
+                    'cyber': { id: 102, name: 'Service Cybersécurité', price: 800 },
+                    'maintenance': { id: 103, name: 'Service Maintenance IT', price: 99 }
+                };
+                
+                const serviceProduct = serviceProducts[service];
+                if (serviceProduct) {
+                    addToCart(serviceProduct.id);
+                    modal.style.display = 'none';
+                }
+            });
+        }
+
+        // ===== NOTIFICATION =====
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            if (!notification) return;
+            
+            notification.querySelector('span').textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // ===== FORMULAIRE DE CONTACT =====
+        function setupContactForm() {
+            const contactForm = document.getElementById('contactForm');
+            if (!contactForm) return;
+            
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    service: document.getElementById('serviceType').value,
+                    message: document.getElementById('message').value
+                };
+                
+                alert(`Merci ${formData.name} ! Votre demande a été envoyée. Nous vous répondrons dans les 24h.`);
+                contactForm.reset();
+            });
+        }
+
+        // ===== NAVIGATION MOBILE =====
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.querySelector('.nav-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // ===== INITIALISATION =====
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mettre à jour le compteur panier
+            updateCartCount();
+            
+            // Initialiser la boutique
+            displayProducts();
+            setupCategoryFilters();
+            setupSearch();
+            
+            // Initialiser le portfolio
+            setupPortfolioFilter();
+            
+            // Initialiser le modal
+            setupModal();
+            
+            // Initialiser le formulaire de contact
+            setupContactForm();
+            
+            // Afficher la page d'accueil par défaut
+            showPage('home');
+        });
+    </script>
+</body>
+</html>
